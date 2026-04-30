@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 교육자료 — 제품·기능 개요 / Claude in Excel</title>
+<style>
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+/* ============================================================
+   Claude 교육자료 — Redesign · "Apple, but more so"
+   - Stronger display sizes, tighter cadence
+   - Pretendard (KR) + Inter (EN) — modern sans pairing
+   - More dramatic alternation: pure black tiles ↔ parchment ↔ white
+   - Single accent: Action Blue
+   - Real product-UI placeholders (chrome window, side panel, ribbon)
+   ============================================================ */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+  /* ── Brand & Accent ──────────────────────────────────────── */
+  --primary: #0066cc;
+  --primary-focus: #0071e3;
+  --primary-on-dark: #2997ff;
+
+  /* ── Ink ─────────────────────────────────────────────────── */
+  --ink: #1d1d1f;
+  --ink-muted-80: #424245;
+  --ink-muted-48: #86868b;
+  --on-dark: #f5f5f7;
+  --on-dark-muted: #a1a1a6;
+
+  /* ── Surfaces ────────────────────────────────────────────── */
+  --canvas: #ffffff;
+  --parchment: #f5f5f7;
+  --pearl: #fbfbfd;
+  --tile-black: #000000;
+  --tile-graphite: #1d1d1f;
+  --tile-charcoal: #161617;
+  --hairline: #d2d2d7;
+  --hairline-soft: #e8e8ed;
+
+  /* ── Radii ───────────────────────────────────────────────── */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --r-pill: 9999px;
+
+  /* ── Type families ───────────────────────────────────────── */
+  --f-display: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --f-text: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
+
+  /* ── Shadow (the only one) ───────────────────────────────── */
+  --shadow-product: 0 30px 60px -20px rgba(0, 0, 0, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.18);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--f-text);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   Global nav · Sub-nav
+   ============================================================ */
+.gnav {
+  position: sticky; top: 0; z-index: 100;
+  height: 48px; background: rgba(0,0,0,0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  color: var(--on-dark);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.gnav__inner {
+  width: 100%; max-width: 1200px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; font-weight: 500; letter-spacing: -0.01em;
+}
+.gnav__brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.gnav__brand .dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #5fb3ff, #0066cc 60%, #003a78);
+  box-shadow: 0 0 12px rgba(41,151,255,0.3);
+}
+.gnav__menu { display: flex; gap: 28px; opacity: 0.85; }
+.gnav__menu a:hover { opacity: 1; color: #fff; }
+
+.subnav {
+  position: sticky; top: 48px; z-index: 99;
+  height: 56px; background: rgba(245,245,247,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex; align-items: center; padding: 0 22px;
+}
+.subnav__inner {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 14px;
+}
+.subnav__title { font-weight: 600; letter-spacing: -0.02em; font-size: 18px; }
+.subnav__links { display: flex; gap: 24px; }
+.subnav__links a { color: var(--ink-muted-80); }
+.subnav__links a:hover { color: var(--ink); }
+.subnav__cta {
+  background: var(--primary); color: #fff;
+  padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 500;
+  transition: transform 120ms;
+}
+.subnav__cta:active { transform: scale(0.95); }
+
+@media (max-width: 833px) {
+  .gnav__menu, .subnav__links { display: none; }
+}
+
+/* ============================================================
+   Tile primitives
+   ============================================================ */
+.tile {
+  width: 100%;
+  padding: 120px 22px;
+  display: flex; justify-content: center;
+}
+.tile--compact { padding: 88px 22px; }
+.tile--light    { background: var(--canvas); color: var(--ink); }
+.tile--parch    { background: var(--parchment); color: var(--ink); }
+.tile--black    { background: var(--tile-black); color: var(--on-dark); }
+.tile--graphite { background: var(--tile-graphite); color: var(--on-dark); }
+.tile--charcoal { background: var(--tile-charcoal); color: var(--on-dark); }
+
+.tile__inner {
+  width: 100%; max-width: 1080px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.tile__inner--wide { max-width: 1200px; }
+.tile__inner--left { text-align: left; align-items: stretch; }
+
+@media (max-width: 833px) {
+  .tile { padding: 72px 20px; }
+}
+
+/* ============================================================
+   Type ramp
+   ============================================================ */
+.eyebrow {
+  font-family: var(--f-text);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 20px 0;
+}
+.tile--black .eyebrow,
+.tile--graphite .eyebrow,
+.tile--charcoal .eyebrow { color: var(--primary-on-dark); }
+
+.kicker {
+  font-family: var(--f-text);
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-muted-48);
+  letter-spacing: 0;
+  margin: 0 0 16px 0;
+}
+.tile--black .kicker,
+.tile--graphite .kicker,
+.tile--charcoal .kicker { color: var(--on-dark-muted); }
+
+.h-mega {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.h-hero {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 5.4vw, 72px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.h-display {
+  font-family: var(--f-display);
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  margin: 0;
+}
+.h-section {
+  font-family: var(--f-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.024em;
+  margin: 0;
+}
+.h-card {
+  font-family: var(--f-display);
+  font-size: 22px; font-weight: 600;
+  line-height: 1.2; letter-spacing: -0.018em;
+  margin: 0;
+}
+.lead {
+  font-family: var(--f-text);
+  font-size: clamp(20px, 1.7vw, 26px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--ink-muted-80);
+  margin: 24px 0 0 0;
+  max-width: 760px;
+}
+.tile--black .lead,
+.tile--graphite .lead,
+.tile--charcoal .lead { color: var(--on-dark-muted); }
+
+.tile__inner--left .lead { margin-left: 0; }
+.tile__inner:not(.tile__inner--left) .lead { margin-left: auto; margin-right: auto; }
+
+.body {
+  font-size: 17px; line-height: 1.5;
+  letter-spacing: -0.012em;
+  color: var(--ink-muted-80);
+}
+.tile--black .body,
+.tile--graphite .body,
+.tile--charcoal .body { color: var(--on-dark-muted); }
+
+.caption {
+  font-size: 13px; line-height: 1.4;
+  color: var(--ink-muted-48);
+  letter-spacing: 0;
+}
+
+.accent { color: var(--primary); }
+.tile--black .accent,
+.tile--graphite .accent,
+.tile--charcoal .accent { color: var(--primary-on-dark); }
+
+.period { color: var(--primary); }
+
+/* Tighter linebreaks for KR */
+.h-mega, .h-hero, .h-display, .h-section { word-break: keep-all; }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn-row {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-top: 40px;
+}
+.tile__inner:not(.tile__inner--left) .btn-row { justify-content: center; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-text);
+  font-size: 16px; font-weight: 500;
+  line-height: 1; letter-spacing: -0.01em;
+  padding: 14px 24px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 120ms, background 120ms, color 120ms, border-color 120ms;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.96); }
+.btn--primary {
+  background: var(--primary); color: #fff;
+}
+.btn--primary:hover { background: var(--primary-focus); }
+.btn--ghost {
+  background: transparent;
+  color: var(--primary);
+  border-color: rgba(0,102,204,0.4);
+}
+.btn--ghost:hover { background: rgba(0,102,204,0.06); border-color: var(--primary); }
+
+.tile--black .btn--ghost,
+.tile--graphite .btn--ghost,
+.tile--charcoal .btn--ghost {
+  color: var(--primary-on-dark);
+  border-color: rgba(41,151,255,0.45);
+}
+.tile--black .btn--ghost:hover,
+.tile--graphite .btn--ghost:hover,
+.tile--charcoal .btn--ghost:hover {
+  background: rgba(41,151,255,0.1);
+  border-color: var(--primary-on-dark);
+}
+
+.btn--arrow::after {
+  content: "→";
+  display: inline-block;
+  transition: transform 200ms;
+}
+.btn--arrow:hover::after { transform: translateX(3px); }
+
+.linkish {
+  color: var(--primary);
+  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.linkish::after {
+  content: "›";
+  transition: transform 200ms;
+}
+.linkish:hover::after { transform: translateX(2px); }
+.tile--black .linkish,
+.tile--graphite .linkish,
+.tile--charcoal .linkish { color: var(--primary-on-dark); }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.hero__pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,102,204,0.08);
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 500;
+  margin-bottom: 24px;
+}
+.hero__pill .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0,102,204,0.18);
+}
+.tile--black .hero__pill,
+.tile--graphite .hero__pill,
+.tile--charcoal .hero__pill {
+  background: rgba(41,151,255,0.12);
+  color: var(--primary-on-dark);
+}
+.tile--black .hero__pill .dot,
+.tile--graphite .hero__pill .dot,
+.tile--charcoal .hero__pill .dot {
+  background: var(--primary-on-dark);
+  box-shadow: 0 0 0 4px rgba(41,151,255,0.22);
+}
+
+.hero__meta {
+  margin-top: 56px;
+  display: flex; gap: 32px; flex-wrap: wrap; justify-content: center;
+  font-size: 13px; color: var(--ink-muted-48);
+}
+.hero__meta strong { color: var(--ink); font-weight: 500; }
+.tile--black .hero__meta strong,
+.tile--graphite .hero__meta strong,
+.tile--charcoal .hero__meta strong { color: var(--on-dark); }
+
+/* ============================================================
+   Hero "constellation" — six product orbs
+   ============================================================ */
+.constellation {
+  margin-top: 80px;
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+.orb {
+  aspect-ratio: 1;
+  border-radius: 28%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 36px);
+  letter-spacing: -0.04em;
+  color: #fff;
+  position: relative;
+  transition: transform 200ms;
+}
+.orb::after {
+  content: ""; position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 50%);
+  pointer-events: none;
+}
+.orb:hover { transform: translateY(-4px); }
+.orb--claude   { background: linear-gradient(160deg, #2997ff, #0066cc 60%, #003a78); }
+.orb--cowork   { background: linear-gradient(160deg, #5e5ce6, #2d2c7a); }
+.orb--code     { background: linear-gradient(160deg, #1d1d1f, #424245); border: 1px solid rgba(255,255,255,0.06); }
+.orb--design   { background: linear-gradient(160deg, #ff6c8a, #b73c5b); }
+.orb--excel    { background: linear-gradient(160deg, #2bb673, #0f7a4b); }
+.orb--chrome   { background: linear-gradient(160deg, #ffb547, #d97706); }
+
+.orb__label {
+  position: absolute; bottom: -28px; left: 0; right: 0;
+  text-align: center; font-size: 12px; font-weight: 500;
+  color: var(--ink-muted-80);
+  letter-spacing: -0.005em;
+}
+.tile--black .orb__label,
+.tile--graphite .orb__label,
+.tile--charcoal .orb__label { color: var(--on-dark-muted); }
+
+@media (max-width: 640px) {
+  .constellation { grid-template-columns: repeat(3, 1fr); gap: 10px; row-gap: 44px; }
+}
+
+/* ============================================================
+   Goal grid (4 numbered cards)
+   ============================================================ */
+.goals {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.tile--parch .goals { background: var(--hairline-soft); border-color: var(--hairline-soft); }
+.goal {
+  background: var(--canvas);
+  padding: 36px 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.tile--parch .goal { background: var(--parchment); }
+.goal__num {
+  font-family: var(--f-display);
+  font-size: 14px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+.goal__title {
+  font-family: var(--f-display);
+  font-size: 20px; font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+  margin: 0;
+}
+.goal__body {
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink-muted-80);
+  margin: 0;
+}
+@media (max-width: 1068px) { .goals { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .goals { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Lineup grid — 6 product cards on parchment
+   ============================================================ */
+.lineup {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+.lineup__card {
+  background: var(--canvas);
+  border-radius: var(--r-lg);
+  padding: 24px 20px;
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 240px;
+  border: 1px solid var(--hairline-soft);
+  transition: transform 200ms, box-shadow 200ms;
+}
+.lineup__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -16px rgba(0,0,0,0.18);
+}
+.lineup__mark {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: var(--f-display);
+  font-weight: 700; font-size: 20px;
+  letter-spacing: -0.04em;
+}
+.lineup__name {
+  font-family: var(--f-display);
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -0.018em;
+}
+.lineup__desc {
+  font-size: 13px; line-height: 1.45;
+  color: var(--ink-muted-80);
+  flex: 1;
+}
+.lineup__env {
+  font-size: 11px;
+  color: var(--ink-muted-48);
+  letter-spacing: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline-soft);
+}
+@media (max-width: 1068px) { .lineup { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .lineup { grid-template-columns: repeat(2, 1fr); } }
+
+/* ============================================================
+   Product hero stack — image left, copy right (alternating)
+   ============================================================ */
+.product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.product--reverse { grid-template-columns: 1fr 1.1fr; }
+.product--reverse .product__copy { order: -1; }
+
+@media (max-width: 1068px) {
+  .product { grid-template-columns: 1fr; gap: 48px; }
+  .product--reverse .product__copy { order: 0; }
+}
+
+.product__copy { max-width: 520px; text-align: left; }
+.product__name {
+  font-family: var(--f-display);
+  font-size: 13px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+  display: flex; align-items: center; gap: 12px;
+}
+.tile--black .product__name,
+.tile--graphite .product__name,
+.tile--charcoal .product__name { color: var(--primary-on-dark); }
+.product__name .num {
+  font-family: var(--f-display);
+  font-size: 11px;
+  background: rgba(0,102,204,0.1);
+  color: var(--primary);
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.tile--black .product__name .num,
+.tile--graphite .product__name .num,
+.tile--charcoal .product__name .num {
+  background: rgba(41,151,255,0.15);
+  color: var(--primary-on-dark);
+}
+
+.product__title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.product__tag {
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-muted-80);
+  margin: 24px 0 0 0;
+  letter-spacing: -0.012em;
+}
+.tile--black .product__tag,
+.tile--graphite .product__tag,
+.tile--charcoal .product__tag { color: var(--on-dark-muted); }
+
+.product__features {
+  list-style: none; padding: 0; margin: 32px 0 0 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.product__features li {
+  font-size: 16px; line-height: 1.5;
+  padding-left: 24px;
+  position: relative;
+  color: var(--ink-muted-80);
+  letter-spacing: -0.01em;
+}
+.tile--black .product__features li,
+.tile--graphite .product__features li,
+.tile--charcoal .product__features li { color: var(--on-dark-muted); }
+.product__features li::before {
+  content: "";
+  position: absolute; left: 4px; top: 10px;
+  width: 8px; height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+.tile--black .product__features li::before,
+.tile--graphite .product__features li::before,
+.tile--charcoal .product__features li::before { background: var(--primary-on-dark); }
+
+.product__cta {
+  margin-top: 32px;
+  display: flex; gap: 18px; flex-wrap: wrap;
+}
+
+/* ============================================================
+   Product UI mockup — placeholder visuals
+   ============================================================ */
+.mockup {
+  width: 100%;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-product);
+  background: var(--canvas);
+  border: 1px solid var(--hairline-soft);
+}
+.tile--black .mockup,
+.tile--graphite .mockup,
+.tile--charcoal .mockup { border-color: rgba(255,255,255,0.06); }
+
+.mockup__chrome {
+  height: 36px;
+  background: var(--parchment);
+  border-bottom: 1px solid var(--hairline-soft);
+  display: flex; align-items: center; padding: 0 14px;
+  gap: 8px;
+}
+.mockup__chrome .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--hairline);
+}
+.mockup__chrome .dot--r { background: #ff5f57; }
+.mockup__chrome .dot--y { background: #febc2e; }
+.mockup__chrome .dot--g { background: #28c840; }
+.mockup__chrome .url {
+  margin-left: 16px;
+  font-size: 11px;
+  color: var(--ink-muted-48);
+  font-family: var(--f-mono);
+  background: var(--canvas);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hairline-soft);
+  flex: 1;
+  max-width: 320px;
+}
+
+.mockup__body {
+  padding: 24px;
+  background: var(--canvas);
+  min-height: 360px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* Variant: Claude chat */
+.mock-chat {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.mock-msg {
+  max-width: 88%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 14px; line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+.mock-msg--user {
+  align-self: flex-end;
+  background: var(--primary); color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.mock-msg--bot {
+  align-self: flex-start;
+  background: var(--parchment); color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+.mock-msg__bar {
+  height: 8px; background: rgba(255,255,255,0.4);
+  border-radius: 4px; margin-top: 6px;
+}
+.mock-msg--bot .mock-msg__bar { background: rgba(0,0,0,0.08); }
+.mock-input {
+  margin-top: auto;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-size: 13px; color: var(--ink-muted-48);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.mock-input::after {
+  content: "↑"; color: var(--primary); font-weight: 700;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(0,102,204,0.12);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+
+/* Variant: Cowork (file tree + status) */
+.mock-cowork {
+  display: grid; grid-template-columns: 180px 1fr;
+  gap: 16px; flex: 1;
+}
+.mock-tree {
+  background: var(--parchment);
+  border-radius: var(--r-md);
+  padding: 14px 12px;
+  font-size: 12px; font-family: var(--f-mono);
+  color: var(--ink-muted-80);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.mock-tree .row { display: flex; align-items: center; gap: 6px; }
+.mock-tree .row::before { content: "📄"; font-size: 10px; }
+.mock-tree .row.folder::before { content: "▾"; color: var(--primary); }
+.mock-tree .row.indent { padding-left: 14px; }
+.mock-tree .row.active { color: var(--primary); font-weight: 600; }
+
+.mock-stage { display: flex; flex-direction: column; gap: 10px; }
+.mock-step {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink-muted-80);
+}
+.mock-step .check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+}
+.mock-step.pending .check { background: var(--hairline); color: var(--ink-muted-48); }
+
+/* Variant: Code (terminal) */
+.mock-term {
+  background: #0d0d0f;
+  color: #e6e6eb;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  padding: 24px;
+  min-height: 360px;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+.mock-term .prompt { color: #2bb673; }
+.mock-term .cmd { color: #e6e6eb; }
+.mock-term .out { color: #a1a1a6; }
+.mock-term .b { color: #2997ff; }
+
+/* Variant: Design canvas */
+.mock-design {
+  display: grid; grid-template-columns: 200px 1fr;
+  flex: 1; gap: 0; min-height: 320px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--hairline-soft);
+}
+.mock-design__chat {
+  background: var(--parchment);
+  padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  border-right: 1px solid var(--hairline-soft);
+}
+.mock-design__chat .bubble {
+  background: var(--canvas);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 12px; line-height: 1.4;
+  color: var(--ink-muted-80);
+}
+.mock-design__chat .bubble--me {
+  background: var(--primary); color: #fff;
+  align-self: flex-end;
+}
+.mock-design__canvas {
+  background: var(--pearl);
+  padding: 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.mock-design__art {
+  width: 100%; max-width: 280px; aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #ff6c8a, #b73c5b);
+  border-radius: var(--r-lg);
+  position: relative;
+  box-shadow: 0 12px 28px -12px rgba(183,60,91,0.5);
+}
+.mock-design__art::before {
+  content: "";
+  position: absolute; top: 16px; left: 16px;
+  width: 50px; height: 8px; background: rgba(255,255,255,0.6);
+  border-radius: 4px;
+}
+.mock-design__art::after {
+  content: "";
+  position: absolute; bottom: 16px; left: 16px; right: 16px;
+  height: 4px; background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+}
+
+/* Variant: Excel (ribbon + sheet + sidebar) */
+.mock-excel {
+  background: var(--canvas);
+  display: flex; flex-direction: column;
+  flex: 1; min-height: 360px;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+.mock-excel__ribbon {
+  background: #0f7a4b;
+  height: 28px;
+  display: flex; align-items: center;
+  padding: 0 14px;
+  gap: 18px;
+  font-size: 11px; color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.mock-excel__ribbon .active {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  padding: 4px 10px; border-radius: 4px;
+}
+.mock-excel__body {
+  display: grid; grid-template-columns: 1fr 240px;
+  flex: 1;
+}
+.mock-excel__sheet {
+  display: grid;
+  grid-template-columns: 32px repeat(4, 1fr);
+  font-size: 11px; font-family: var(--f-mono);
+  color: var(--ink);
+  border-right: 1px solid var(--hairline-soft);
+}
+.mock-excel__sheet .cell {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--hairline-soft);
+  border-right: 1px solid var(--hairline-soft);
+}
+.mock-excel__sheet .cell.head {
+  background: var(--parchment);
+  font-weight: 600; color: var(--ink-muted-48);
+  text-align: center;
+}
+.mock-excel__sheet .cell.row {
+  background: var(--parchment);
+  text-align: center; color: var(--ink-muted-48);
+  font-weight: 500;
+}
+.mock-excel__sheet .cell.cite {
+  background: rgba(0,102,204,0.06);
+  border: 1px solid var(--primary);
+  position: relative;
+}
+.mock-excel__panel {
+  background: var(--parchment);
+  padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.mock-excel__panel .head {
+  font-size: 11px; font-weight: 600; color: var(--ink);
+  display: flex; align-items: center; gap: 6px;
+}
+.mock-excel__panel .head .dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: linear-gradient(160deg, #2997ff, #0066cc);
+}
+.mock-excel__panel .bubble {
+  background: var(--canvas);
+  border-radius: 10px;
+  padding: 10px 11px;
+  font-size: 11px; line-height: 1.5;
+  color: var(--ink-muted-80);
+}
+.mock-excel__panel .citation {
+  font-size: 10px;
+  color: var(--primary); font-weight: 600;
+  font-family: var(--f-mono);
+}
+
+/* Variant: Chrome (sidepanel) */
+.mock-chrome {
+  display: grid; grid-template-columns: 1fr 220px;
+  flex: 1; min-height: 360px;
+}
+.mock-chrome__page {
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--canvas);
+  border-right: 1px solid var(--hairline-soft);
+}
+.mock-chrome__page .h {
+  height: 18px; width: 60%;
+  background: var(--ink); border-radius: 4px;
+}
+.mock-chrome__page .p { height: 8px; background: var(--hairline); border-radius: 4px; }
+.mock-chrome__page .p.s { width: 80%; }
+.mock-chrome__page .p.t { width: 50%; }
+.mock-chrome__page .img {
+  margin-top: 8px;
+  height: 80px; background: linear-gradient(135deg, #ffb547, #d97706);
+  border-radius: var(--r-sm);
+}
+.mock-chrome__panel {
+  background: var(--parchment);
+  padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.mock-chrome__panel .head {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600;
+}
+.mock-chrome__panel .head .dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: linear-gradient(160deg, #2997ff, #0066cc);
+}
+.mock-chrome__panel .summary {
+  background: var(--canvas);
+  border-radius: 10px;
+  padding: 10px 11px;
+  font-size: 11px; line-height: 1.5;
+  color: var(--ink-muted-80);
+}
+.mock-chrome__panel .pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--canvas);
+  border: 1px solid var(--hairline-soft);
+  padding: 4px 8px;
+  border-radius: var(--r-pill);
+  font-size: 10px;
+  color: var(--ink-muted-80);
+  width: fit-content;
+}
+
+/* ============================================================
+   Compare table
+   ============================================================ */
+.compare {
+  margin-top: 56px;
+  width: 100%;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--canvas);
+}
+.tile--parch .compare { background: var(--canvas); }
+.compare__row {
+  display: grid;
+  grid-template-columns: 200px 1fr 1.2fr;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.compare__row:last-child { border-bottom: none; }
+.compare__row > div { padding: 18px 24px; font-size: 15px; }
+.compare__row--head > div {
+  background: var(--parchment);
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-muted-48);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.compare__row--head .accent-bg {
+  background: var(--ink); color: var(--on-dark);
+}
+.compare__label { font-weight: 600; color: var(--ink); }
+.compare__row .vs-claude { color: var(--ink-muted-48); }
+.compare__row .vs-excel { color: var(--ink); font-weight: 500; }
+.compare__row .vs-excel strong { color: var(--primary); font-weight: 600; }
+
+@media (max-width: 833px) {
+  .compare__row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Decision matrix (full bleed dark)
+   ============================================================ */
+.decision {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.dec-row {
+  background: var(--tile-graphite);
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.dec-row .case {
+  font-size: 13px; color: var(--on-dark-muted);
+  letter-spacing: 0;
+}
+.dec-row .pick {
+  font-family: var(--f-display);
+  font-size: 22px; font-weight: 700;
+  color: var(--primary-on-dark);
+  letter-spacing: -0.02em;
+}
+@media (max-width: 833px) { .decision { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Steps strip — install (4) and workflow (5)
+   ============================================================ */
+.steps {
+  margin-top: 64px;
+  display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: 16px;
+  width: 100%;
+  counter-reset: stp;
+}
+.step {
+  background: var(--canvas);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  border: 1px solid var(--hairline-soft);
+  position: relative;
+}
+.tile--charcoal .step,
+.tile--graphite .step,
+.tile--black .step {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+.step__num {
+  font-family: var(--f-display);
+  font-size: 32px; font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.tile--charcoal .step__num,
+.tile--graphite .step__num,
+.tile--black .step__num { color: var(--primary-on-dark); }
+.step__title {
+  font-family: var(--f-display);
+  font-size: 17px; font-weight: 600;
+  letter-spacing: -0.018em;
+}
+.step__title.on-dark { color: #fff; }
+.step__body {
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink-muted-80);
+}
+.tile--charcoal .step__body,
+.tile--graphite .step__body,
+.tile--black .step__body { color: var(--on-dark-muted); }
+.step__quote {
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px dashed var(--hairline-soft);
+  font-size: 12px; line-height: 1.5;
+  color: var(--ink-muted-48);
+  font-style: italic;
+}
+.tile--charcoal .step__quote,
+.tile--graphite .step__quote,
+.tile--black .step__quote {
+  border-top-color: rgba(255,255,255,0.1);
+  color: var(--on-dark-muted);
+}
+
+@media (max-width: 1068px) { .steps { --cols: 2 !important; } }
+@media (max-width: 640px) { .steps { --cols: 1 !important; } }
+
+/* ============================================================
+   Features (4 cards with examples)
+   ============================================================ */
+.features {
+  margin-top: 56px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; width: 100%;
+}
+.feature {
+  background: var(--canvas);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.feature__num {
+  font-family: var(--f-display);
+  font-size: 13px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+.feature__title {
+  font-family: var(--f-display);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+.feature__body {
+  font-size: 15px; line-height: 1.55;
+  color: var(--ink-muted-80);
+  margin: 0;
+}
+.example {
+  background: var(--parchment);
+  border-left: 3px solid var(--primary);
+  padding: 12px 16px;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.example::before {
+  content: '"';
+  font-family: var(--f-display);
+  color: var(--primary); font-weight: 700;
+  margin-right: 4px;
+  font-size: 18px;
+}
+.example::after { content: '"'; color: var(--primary); font-weight: 700; }
+.example + .example { margin-top: 8px; }
+
+@media (max-width: 833px) { .features { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Note callout
+   ============================================================ */
+.note {
+  margin-top: 32px;
+  background: var(--canvas);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--r-lg);
+  padding: 24px 28px;
+  font-size: 15px; line-height: 1.6;
+  color: var(--ink-muted-80);
+}
+.note strong { color: var(--ink); font-weight: 600; }
+.note .accent { font-weight: 600; }
+.tile--graphite .note,
+.tile--charcoal .note,
+.tile--black .note {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  color: var(--on-dark-muted);
+}
+.tile--graphite .note strong,
+.tile--charcoal .note strong,
+.tile--black .note strong { color: #fff; }
+code.kbd {
+  background: var(--parchment);
+  border: 1px solid var(--hairline-soft);
+  padding: 2px 8px;
+  border-radius: var(--r-xs);
+  font-family: var(--f-mono);
+  font-size: 13px;
+}
+.tile--graphite code.kbd,
+.tile--charcoal code.kbd,
+.tile--black code.kbd {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* ============================================================
+   Concepts grid (4 supplementary)
+   ============================================================ */
+.concepts {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; width: 100%;
+}
+.concept {
+  background: var(--canvas);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.concept__tag {
+  align-self: flex-start;
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 600;
+  color: var(--primary);
+  background: rgba(0,102,204,0.08);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  letter-spacing: 0.02em;
+}
+.concept__title {
+  font-family: var(--f-display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 4px 0;
+}
+.concept__body {
+  font-size: 14px; line-height: 1.55;
+  color: var(--ink-muted-80);
+}
+@media (max-width: 833px) { .concepts { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Schedule
+   ============================================================ */
+.schedule {
+  margin-top: 40px;
+  width: 100%;
+  border-top: 1px solid var(--hairline);
+}
+.sch-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 160px;
+  padding: 18px 8px;
+  border-bottom: 1px solid var(--hairline-soft);
+  align-items: baseline;
+  gap: 24px;
+}
+.sch-row--head {
+  font-size: 11px; font-weight: 600;
+  color: var(--ink-muted-48);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 8px;
+}
+.sch-time {
+  font-family: var(--f-mono);
+  font-size: 14px; font-weight: 500;
+  color: var(--primary);
+  letter-spacing: 0;
+}
+.sch-content { font-size: 16px; color: var(--ink); }
+.sch-mode {
+  font-size: 13px; color: var(--ink-muted-48);
+}
+@media (max-width: 833px) {
+  .sch-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
+  .sch-row--head { display: none; }
+}
+
+/* ============================================================
+   Prompts grid (10 prompts)
+   ============================================================ */
+.prompts {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.prompt {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.prompt__num {
+  font-family: var(--f-display);
+  font-weight: 700; font-size: 22px;
+  letter-spacing: -0.04em;
+  color: var(--primary-on-dark);
+  flex-shrink: 0;
+  width: 28px;
+}
+.prompt__text {
+  font-size: 14px; line-height: 1.55;
+  color: var(--on-dark);
+}
+@media (max-width: 833px) { .prompts { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  background: var(--tile-black);
+  color: var(--on-dark-muted);
+  padding: 80px 22px 40px;
+  font-size: 13px; line-height: 1.6;
+  letter-spacing: 0;
+}
+.footer__inner { max-width: 1200px; margin: 0 auto; }
+.footer__grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer__grid h5 {
+  color: #fff; font-size: 13px; font-weight: 600;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.005em;
+}
+.footer__grid li { padding: 4px 0; }
+.footer__legal {
+  margin-top: 32px;
+  font-size: 12px; color: var(--on-dark-muted);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer__brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 600; font-size: 16px; }
+.footer__brand .dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #5fb3ff, #0066cc 60%, #003a78);
+}
+.footer__tag { margin-top: 12px; max-width: 360px; }
+.footer ul { list-style: none; margin: 0; padding: 0; }
+@media (max-width: 833px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   Section divider — for left-aligned tiles, wide
+   ============================================================ */
+.section-head { margin-bottom: 16px; }
+.section-head .lead { margin-top: 20px; max-width: 720px; }
+
+/* Number marker for analogy line */
+.analogy {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+.analogy__item {
+  display: flex; flex-direction: column; gap: 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.analogy__name {
+  font-family: var(--f-display);
+  font-size: 15px; font-weight: 700;
+  color: #fff; letter-spacing: -0.01em;
+}
+.analogy__role {
+  font-size: 13px; line-height: 1.5;
+  color: var(--on-dark-muted);
+}
+@media (max-width: 1068px) { .analogy { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .analogy { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<style data-emotion="css" data-s=""></style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+</head>
+<body style="">
+
+<!-- ============================================================
+     GLOBAL NAV
+     ============================================================ -->
+<nav class="gnav" aria-label="Global">
+  <div class="gnav__inner">
+    <span class="gnav__brand"><span class="dot"></span> 울산대학교 업무개선 AI 멘토링</span>
+    <div class="gnav__menu">
+      <a href="#part1">1일차 · 개요</a>
+      <a href="#part2">2일차 · in Excel</a>
+      <a href="#appendix">부록</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Sub-nav frosted -->
+<div class="subnav">
+  <div class="subnav__inner">
+    <span class="subnav__title">Claude 플랫폼.</span>
+    <div class="subnav__links">
+      <a href="#products">제품</a>
+      <a href="#concepts">개념</a>
+      <a href="#decision">선택 가이드</a>
+      <a href="#part2">in Excel</a>
+    </div>
+    <a class="subnav__cta" href="#part1">자료 시작</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     PART 1 — HERO
+     ============================================================ -->
+<section class="tile tile--light" id="part1">
+  <div class="tile__inner">
+    <div class="hero">
+      <div class="hero__pill"><span class="dot"></span> 1일차 · 제품·기능 개요</div>
+      <h1 class="h-mega">한 개의 두뇌<span class="period">.</span><br>여섯 개의 도구<span class="period">.</span></h1>
+      <p class="lead" style="">Claude는 단일 챗봇이 아닙니다.&nbsp;</p><div>같은 모델을 어떤 환경에서 만나느냐에 따라<br>전혀 다른 일이 가능한 ‘업무용 AI 플랫폼’입니다.</div><p></p>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--arrow" href="#products">6개 제품 보기</a>
+        <a class="btn btn--ghost" href="#decision">상황별 선택 가이드</a>
+      </div>
+
+      <!-- Constellation: 6 product orbs -->
+      <div class="constellation">
+        <div class="orb orb--claude">C<span class="orb__label">Claude</span></div>
+        <div class="orb orb--cowork">Co<span class="orb__label">Cowork</span></div>
+        <div class="orb orb--code">{ }<span class="orb__label">Code</span></div>
+        <div class="orb orb--design">◆<span class="orb__label">Design</span></div>
+        <div class="orb orb--excel">𝑥̄<span class="orb__label">in Excel</span></div>
+        <div class="orb orb--chrome">◐<span class="orb__label">in Chrome</span></div>
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     학습 목표
+     ============================================================ -->
+<section class="tile tile--parch">
+  <div class="tile__inner tile__inner--left">
+    <div class="section-head">
+      <p class="eyebrow">학습 목표</p>
+      <h2 class="h-display">강의가 끝나면<span class="period">,</span><br>네 가지를 할 수 있습니다<span class="period">.</span></h2>
+    </div>
+    <div class="goals">
+      <div class="goal">
+        <div class="goal__num">01</div>
+        <h3 class="goal__title">플랫폼으로 이해하기</h3>
+        <p class="goal__body">Claude가 단일 챗봇이 아닌, 6개 제품으로 구성된 업무용 AI 플랫폼임을 이해합니다.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">02</div>
+        <h3 class="goal__title">제품 구분하기</h3>
+        <p class="goal__body">각 제품의 특징과 적합한 업무 상황을 구분합니다 — Claude · Cowork · Code · Design · in Excel · in Chrome.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">03</div>
+        <h3 class="goal__title">부가 개념 알기</h3>
+        <p class="goal__body">API · MCP · Skills · Dispatch의 의미와 관계를 알고 추가 학습 방향을 잡습니다.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">04</div>
+        <h3 class="goal__title">조합해 쓰기</h3>
+        <p class="goal__body">실제 업무 시나리오에서 어떤 제품을 어떻게 조합해 쓸지 의사결정합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LINEUP — 6 product cards
+     ============================================================ -->
+<section class="tile tile--light">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅰ. 라인업</p>
+      <h2 class="h-display">같은 두뇌<span class="period">,</span> 다른 도구<span class="period">.</span></h2>
+      <p class="lead">Anthropic의 같은 모델을 여섯 가지 환경에서 만납니다. 환경이 바뀌면 가능한 일이 달라집니다.</p>
+    </div>
+
+    <div class="lineup">
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #2997ff, #0066cc);">C</div>
+        <div class="lineup__name">Claude</div>
+        <div class="lineup__desc">텍스트·문서·이미지 대화형 AI. 모든 것의 출발점.</div>
+        <div class="lineup__env">웹 · 모바일 · 데스크톱</div>
+      </div>
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #5e5ce6, #2d2c7a);">Co</div>
+        <div class="lineup__name">Cowork</div>
+        <div class="lineup__desc">내 PC의 파일·앱을 직접 다루는 데스크톱 에이전트.</div>
+        <div class="lineup__env">macOS · Windows 앱</div>
+      </div>
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #1d1d1f, #424245);">{ }</div>
+        <div class="lineup__name">Code</div>
+        <div class="lineup__desc">터미널에서 코드를 짜고 명령을 실행하는 코딩 에이전트.</div>
+        <div class="lineup__env">CLI · IDE 연동</div>
+      </div>
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #ff6c8a, #b73c5b);">◆</div>
+        <div class="lineup__name">Design</div>
+        <div class="lineup__desc">대화로 발표자료·시안·프로토타입을 만드는 비주얼 도구.</div>
+        <div class="lineup__env">Anthropic Labs</div>
+      </div>
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #2bb673, #0f7a4b);">𝑥̄</div>
+        <div class="lineup__name">in Excel</div>
+        <div class="lineup__desc">엑셀 사이드바에서 동작하는 스프레드시트 어시스턴트.</div>
+        <div class="lineup__env">Excel 추가기능</div>
+      </div>
+      <div class="lineup__card">
+        <div class="lineup__mark" style="background: linear-gradient(160deg, #ffb547, #d97706);">◐</div>
+        <div class="lineup__name">in Chrome</div>
+        <div class="lineup__desc">브라우저에서 웹사이트를 직접 탐색·조작하는 에이전트.</div>
+        <div class="lineup__env">Chrome 확장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     비유 (dark)
+     ============================================================ -->
+<section class="tile tile--graphite tile--compact">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <p class="eyebrow">비유로 이해하기</p>
+    <h2 class="h-display">같은 사람<span class="period">.</span> 역할만 바뀌어 있습니다<span class="period">.</span></h2>
+
+    <div class="analogy">
+      <div class="analogy__item"><div class="analogy__name">Claude</div><div class="analogy__role">메신저로 일하는 비서</div></div>
+      <div class="analogy__item"><div class="analogy__name">Cowork</div><div class="analogy__role">옆자리 PC 도우미</div></div>
+      <div class="analogy__item"><div class="analogy__name">Code</div><div class="analogy__role">시니어 엔지니어</div></div>
+      <div class="analogy__item"><div class="analogy__name">Design</div><div class="analogy__role">함께 일하는 디자이너</div></div>
+      <div class="analogy__item"><div class="analogy__name">in Excel</div><div class="analogy__role">엑셀 옆 데이터 분석가</div></div>
+      <div class="analogy__item"><div class="analogy__name">in Chrome</div><div class="analogy__role">자료조사 인턴</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 1 — Claude (light)
+     ============================================================ -->
+<section class="tile tile--light" id="products">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product">
+      <div class="product__copy">
+        <p class="product__name"><span class="num">01</span> Claude</p>
+        <h2 class="product__title">대화로<br>업무를 시작하다<span class="period">.</span></h2>
+        <p class="product__tag">웹·모바일·데스크톱에서 자연어로 문서 작성·요약·아이디어 정리를 돕는, 가장 기본 형태.</p>
+        <ul class="product__features">
+          <li>긴 문서·PDF·이미지 첨부 후 질문·요약·번역</li>
+          <li>보고서·이메일·공지문 초안 작성 및 톤 변환</li>
+          <li>회의록 정리, 표 데이터 해석, 자료 비교</li>
+          <li>프롬프트 한 줄로 표·체크리스트·일정표 출력</li>
+        </ul>
+        <div class="product__cta">
+          <a class="linkish" href="https://claude.ai">claude.ai로 가기</a>
+        </div>
+      </div>
+
+      <!-- Mockup: Claude chat -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url">claude.ai</span>
+        </div>
+        <div class="mockup__body">
+          <div class="mock-chat">
+            <div class="mock-msg mock-msg--user">이 보고서 PDF를 5줄로 요약하고, 핵심 의사결정 3가지를 표로 정리해줘.</div>
+            <div class="mock-msg mock-msg--bot">
+              요약 5문장과 의사결정 표를 정리했습니다.
+              <div class="mock-msg__bar"></div>
+              <div class="mock-msg__bar" style="width: 80%;"></div>
+              <div class="mock-msg__bar" style="width: 60%;"></div>
+            </div>
+          </div>
+          <div class="mock-input">메시지 보내기 …</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 2 — Cowork (graphite)
+     ============================================================ -->
+<section class="tile tile--graphite">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product product--reverse">
+      <!-- Mockup: file tree + steps -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url">~/원서접수_2026</span>
+        </div>
+        <div class="mockup__body">
+          <div class="mock-cowork">
+            <div class="mock-tree">
+              <div class="row folder">원서접수_2026</div>
+              <div class="row indent">학과별_지원자.xlsx</div>
+              <div class="row indent active">통계요약.pptx</div>
+              <div class="row indent">증감_분석.xlsx</div>
+              <div class="row folder indent" style="margin-top: 6px;">archive</div>
+            </div>
+            <div class="mock-stage">
+              <div class="mock-step"><span class="check">✓</span> 엑셀 10개 합치기</div>
+              <div class="mock-step"><span class="check">✓</span> 학과별 통계 집계</div>
+              <div class="mock-step"><span class="check">✓</span> PPT 10장 생성</div>
+              <div class="mock-step pending"><span class="check">4</span> 메일 초안 작성 중…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__copy">
+        <p class="product__name"><span class="num">02</span> Cowork</p>
+        <h2 class="product__title">디지털 동료<span class="period">.</span></h2>
+        <p class="product__tag">내 PC의 폴더·파일을 직접 읽고 쓰며 여러 단계 업무를 한 번에 끝내는 데스크톱 에이전트.</p>
+        <ul class="product__features">
+          <li>선택한 폴더 내 파일 읽기·쓰기·이름 변경·정리</li>
+          <li>워드 / 엑셀 / PPT / PDF 결과물 자동 생성</li>
+          <li>Drive · Gmail 외부 서비스 커넥터, 도메인별 플러그인</li>
+          <li><strong style="color:#fff">Dispatch</strong> — 모바일에서 지시 → PC 백그라운드 처리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 3 — Code (parchment)
+     ============================================================ -->
+<section class="tile tile--parch">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product">
+      <div class="product__copy">
+        <p class="product__name"><span class="num">03</span> Code</p>
+        <h2 class="product__title">에이전트형<br>개발 도구<span class="period">.</span></h2>
+        <p class="product__tag">터미널에서 자연어 명령으로 코드를 작성·실행·수정하고 git까지 다루는 개발자·IT용 도구.</p>
+        <ul class="product__features">
+          <li>코드 작성·리팩토링·디버깅, 명령 실행, 파일 수정</li>
+          <li>git 워크플로 — 커밋 · PR · 리뷰 자연어 처리</li>
+          <li>MCP를 통한 외부 도구 · DB · API 연결</li>
+          <li>Skills(SKILL.md) — 반복 워크플로 자동화·공유</li>
+          <li>스케줄 — 매일 아침 PR 리뷰, 야간 CI 분석</li>
+        </ul>
+        <div class="product__cta">
+          <a class="linkish" href="https://code.claude.com">code.claude.com 문서</a>
+        </div>
+      </div>
+
+      <!-- Mockup: terminal -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url" style="background:#0d0d0f; color:#a1a1a6; border-color: rgba(255,255,255,0.1);">~ — claude</span>
+        </div>
+        <div class="mock-term">
+          <div><span class="prompt">$</span> <span class="cmd">claude</span></div>
+          <div class="out" style="color:#2997ff;">› Welcome to Claude Code (v0.4.6)</div>
+          <div style="margin-top: 12px;"><span class="b">›</span> 사내 분석 스크립트 작성 후 결과를 매일 아침 슬랙으로 보내줘.</div>
+          <div class="out" style="margin-top: 8px;">  → analyze_daily.py 작성</div>
+          <div class="out">  → cron 등록 (매일 09:00)</div>
+          <div class="out">  → Slack 웹훅 연동</div>
+          <div class="out" style="color:#2bb673; margin-top: 8px;">  ✓ 완료. 첫 실행: 내일 09:00</div>
+          <div style="margin-top: 14px;"><span class="prompt">$</span> <span style="opacity:0.6;">_</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top: 56px;">
+      <strong>시작하는 법.</strong>
+      터미널에 <code class="kbd">npm install -g @anthropic-ai/claude-code</code> 설치 후 <code class="kbd">claude</code> 실행.<br>
+      <strong>유의점.</strong> 사무직은 직접 학습 불필요 — ‘이런 도구가 있다’ 정도 인지. 도입 시 IT/보안과 사용 범위 협의.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 4 — Design (charcoal)
+     ============================================================ -->
+<section class="tile tile--charcoal">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product product--reverse">
+      <!-- Mockup: Design canvas -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url">claude.ai/labs/design</span>
+        </div>
+        <div class="mockup__body" style="padding: 0;">
+          <div class="mock-design">
+            <div class="mock-design__chat">
+              <div class="bubble bubble--me">신입생 모집 랜딩페이지</div>
+              <div class="bubble">3가지 시안 만드는 중…</div>
+              <div class="bubble bubble--me">두 번째가 좋아. 더 따뜻하게.</div>
+              <div class="bubble">컬러 · 카피 조정 적용</div>
+            </div>
+            <div class="mock-design__canvas">
+              <div class="mock-design__art"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__copy">
+        <p class="product__name"><span class="num">04</span> Design</p>
+        <h2 class="product__title" style="">Claude Design<span class="period">.</span></h2>
+        <p class="product__tag">대화만으로 발표자료·UI 시안·프로토타입·랜딩페이지를 만드는 비주얼 제작 도구.</p>
+        <ul class="product__features">
+          <li>자연어로 PPT · 랜딩페이지 · 대시보드 시안 자동 생성</li>
+          <li>왼쪽 ‘대화창’ + 오른쪽 ‘캔버스’ — 즉시 시각 확인</li>
+          <li>스크린샷·PPT 업로드해 ‘이 스타일로 만들어줘’</li>
+          <li>팀 디자인 시스템 연결 시 톤·컴포넌트 자동 적용</li>
+          <li>결과물은 HTML · CSS · JS 코드로 제공</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 5 — in Excel (light)
+     ============================================================ -->
+<section class="tile tile--light">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product">
+      <div class="product__copy">
+        <p class="product__name"><span class="num">05</span> in Excel</p>
+        <h2 class="product__title">스프레드시트<br>어시스턴트<span class="period">.</span></h2>
+        <p class="product__tag">엑셀 사이드바에서 워크북 전체의 구조·수식·탭 관계를 이해한 채로 통계·분석을 돕는 추가기능.</p>
+        <ul class="product__features">
+          <li>셀 단위 인용으로 근거 있는 답변</li>
+          <li>피벗 · SUMIFS 없이 자연어 그룹 집계 · 교차분석</li>
+          <li>데이터 정제 — 결측 · 중복 · 이상치 · 표기 통일</li>
+          <li>보고용 ‘3줄 요약 · 시사점’ 자동 생성</li>
+          <li>Opus 4.6 / 4.5 · Sonnet 4.6 (최대 1M 토큰)</li>
+        </ul>
+        <div class="product__cta">
+          <a class="btn btn--primary btn--arrow" href="#part2">in Excel 심화 자료</a>
+        </div>
+      </div>
+
+      <!-- Mockup: Excel ribbon + sheet + sidebar -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url">원서접수_2026.xlsx — Excel</span>
+        </div>
+        <div class="mock-excel">
+          <div class="mock-excel__ribbon">
+            <span>홈</span>
+            <span>삽입</span>
+            <span>수식</span>
+            <span class="active">Claude</span>
+            <span>데이터</span>
+            <span>검토</span>
+          </div>
+          <div class="mock-excel__body">
+            <div class="mock-excel__sheet">
+              <div class="cell head"></div>
+              <div class="cell head">A</div>
+              <div class="cell head">B</div>
+              <div class="cell head">C</div>
+              <div class="cell head">D</div>
+
+              <div class="cell row">1</div>
+              <div class="cell">학과</div>
+              <div class="cell">전형</div>
+              <div class="cell">지원자</div>
+              <div class="cell">증감</div>
+
+              <div class="cell row">2</div>
+              <div class="cell">경영학</div>
+              <div class="cell">수시</div>
+              <div class="cell cite">412</div>
+              <div class="cell">+18%</div>
+
+              <div class="cell row">3</div>
+              <div class="cell">컴공</div>
+              <div class="cell">정시</div>
+              <div class="cell">387</div>
+              <div class="cell">+24%</div>
+
+              <div class="cell row">4</div>
+              <div class="cell">디자인</div>
+              <div class="cell">실기</div>
+              <div class="cell">209</div>
+              <div class="cell">−3%</div>
+            </div>
+            <div class="mock-excel__panel">
+              <div class="head"><span class="dot"></span> Claude</div>
+              <div class="bubble">학과별 지원자 합계와 전년 대비 증감을 표로 정리했습니다.</div>
+              <div class="citation">근거: ‘2026시트’ C2:C500</div>
+              <div class="bubble">컴공 정시 +24%가 전체 평균 대비 가장 큰 증가 폭입니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     제품 6 — in Chrome (charcoal)
+     ============================================================ -->
+<section class="tile tile--charcoal">
+  <div class="tile__inner tile__inner--wide">
+    <div class="product product--reverse">
+      <!-- Mockup: Chrome page + side panel -->
+      <div class="mockup">
+        <div class="mockup__chrome">
+          <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          <span class="url">moe.go.kr/policy/admission</span>
+        </div>
+        <div class="mockup__body" style="padding: 0;">
+          <div class="mock-chrome">
+            <div class="mock-chrome__page">
+              <div class="h"></div>
+              <div class="p"></div>
+              <div class="p s"></div>
+              <div class="p t"></div>
+              <div class="p"></div>
+              <div class="img"></div>
+              <div class="p s"></div>
+              <div class="p"></div>
+            </div>
+            <div class="mock-chrome__panel">
+              <div class="head"><span class="dot"></span> Claude</div>
+              <div class="summary">2026 입학정책 중 변경된 3개 항목을 요약했습니다.</div>
+              <div class="pill">▶ 이 워크플로 자동 실행</div>
+              <div class="summary">매주 월요일 09:00에 변경사항을 자동으로 보고합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__copy">
+        <p class="product__name"><span class="num">06</span> in Chrome</p>
+        <h2 class="product__title">브라우저<br>에이전트<span class="period">.</span></h2>
+        <p class="product__tag">Chrome 사이드 패널에서 직접 웹사이트를 탐색·클릭·폼 입력해 반복 웹업무를 자동화.</p>
+        <ul class="product__features">
+          <li>현재 페이지 요약 · 번역 · 표 추출</li>
+          <li>여러 탭을 묶어 한 번에 비교 · 정리</li>
+          <li><strong style="color:#fff">워크플로 녹화</strong> — 절차 학습 후 반복 실행</li>
+          <li>스케줄 작업 — 일·주·월 단위 자동 실행</li>
+          <li>Cowork · Code 결합 시 ‘리서치 → 결과물’ E2E</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     부가 개념
+     ============================================================ -->
+<section class="tile tile--parch" id="concepts">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅲ. 부가 개념</p>
+      <h2 class="h-display">알아두면<br>그림이 선명해집니다<span class="period">.</span></h2>
+    </div>
+    <div class="concepts">
+      <div class="concept">
+        <span class="concept__tag">API · Platform</span>
+        <h3 class="concept__title">시스템 직결 통로<span class="period">.</span></h3>
+        <p class="concept__body">프로그래밍을 통해 Claude 모델을 회사 시스템에 직접 연동하는 통로. 사내 챗봇·자동화 백엔드를 만들 때 사용.</p>
+      </div>
+      <div class="concept">
+        <span class="concept__tag">MCP · Plugins</span>
+        <h3 class="concept__title">외부 도구 연결 표준<span class="period">.</span></h3>
+        <p class="concept__body">Model Context Protocol — Slack · Drive · 사내 DB와 연결하는 규격. Cowork · Code · Chrome에 설치하면 가능한 일이 늘어납니다.</p>
+      </div>
+      <div class="concept">
+        <span class="concept__tag">Skills</span>
+        <h3 class="concept__title">반복 워크플로 묶음<span class="period">.</span></h3>
+        <p class="concept__body">반복 작업을 ‘SKILL.md’ 지침 묶음으로 만들어 둔 것. 자동으로 읽고 따라하기 때문에 결과 품질이 크게 향상됩니다.</p>
+      </div>
+      <div class="concept">
+        <span class="concept__tag">Dispatch</span>
+        <h3 class="concept__title">모바일 → PC 백그라운드<span class="period">.</span></h3>
+        <p class="concept__body">외근 중 모바일에서 지시 → 사무실 데스크톱의 Cowork이 백그라운드 처리. ‘퇴근 전 내일 회의자료 정리해 둬’가 가능합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     의사결정 가이드 (graphite)
+     ============================================================ -->
+<section class="tile tile--graphite" id="decision">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅳ. 선택 가이드</p>
+      <h2 class="h-display">상황을 정의하고<span class="period">,</span><br>도구를 고릅니다<span class="period">.</span></h2>
+      <p class="lead">여러 도구의 ‘조합’이 거의 항상 정답입니다.</p>
+    </div>
+
+    <div class="decision">
+      <div class="dec-row"><span class="case">짧은 글 작성·요약·번역</span><span class="pick">Claude</span></div>
+      <div class="dec-row"><span class="case">여러 파일을 합쳐 보고서·PPT·엑셀로 산출</span><span class="pick">Cowork</span></div>
+      <div class="dec-row"><span class="case">엑셀 통계·집계·정제</span><span class="pick">in Excel</span></div>
+      <div class="dec-row"><span class="case">웹사이트 모니터링·반복 폼 입력</span><span class="pick">in Chrome</span></div>
+      <div class="dec-row"><span class="case">발표자료·랜딩페이지·인포그래픽 시안</span><span class="pick">Design</span></div>
+      <div class="dec-row"><span class="case">HTML·간단한 웹앱</span><span class="pick">Code</span></div>
+      <div class="dec-row"><span class="case">리서치 → 파일화 E2E</span><span class="pick">Chrome + Cowork</span></div>
+      <div class="dec-row"><span class="case">통계 분석 + 시각화 동시 작성</span><span class="pick">in Excel + Design</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PART 2 — Hero
+     ============================================================ -->
+<section class="tile tile--light" id="part2">
+  <div class="tile__inner">
+    <div class="hero">
+      <div class="hero__pill"><span class="dot"></span> 2일차 · 심화</div>
+      <h1 class="h-mega">Claude in Excel<span class="period">.</span><br>통계자료를 다시 쓰다<span class="period">.</span></h1>
+      <p class="lead">사무직 직원을 위한 1시간 입문 — 통계자료 작성 중심.<br>설치부터 보안 원칙까지, 한 번에.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--arrow" href="#install">설치 가이드</a>
+        <a class="btn btn--ghost" href="#workflow">5단계 워크플로</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     in Excel 학습 목표 (parchment)
+     ============================================================ -->
+<section class="tile tile--parch tile--compact">
+  <div class="tile__inner tile__inner--left">
+    <div class="section-head">
+      <p class="eyebrow">학습 목표 · 1시간</p>
+      <h2 class="h-display">엑셀과 무엇이 다른지<span class="period">,</span><br>안전하게 어떻게 쓸지<span class="period">.</span></h2>
+    </div>
+    <div class="goals">
+      <div class="goal">
+        <div class="goal__num">01</div>
+        <h3 class="goal__title">개념 이해</h3>
+        <p class="goal__body">Claude in Excel이 무엇이고, 기존 엑셀과 무엇이 다른지 이해합니다.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">02</div>
+        <h3 class="goal__title">설치 &amp; 로그인</h3>
+        <p class="goal__body">추가기능 설치 및 로그인 방법을 익힙니다.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">03</div>
+        <h3 class="goal__title">통계자료 워크플로</h3>
+        <p class="goal__body">요약 · 분류 · 집계 · 해석의 표준 흐름을 이해합니다.</p>
+      </div>
+      <div class="goal">
+        <div class="goal__num">04</div>
+        <h3 class="goal__title">보안 원칙</h3>
+        <p class="goal__body">안전하게 사용하기 위한 데이터 처리 원칙을 숙지합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     비교: 일반 Claude vs in Excel (light)
+     ============================================================ -->
+<section class="tile tile--light">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅰ. Claude in Excel이란?</p>
+      <h2 class="h-display">‘근거 있는 숫자’가<br>중요한 업무에 특화<span class="period">.</span></h2>
+      <p class="lead">Anthropic이 제공하는 공식 Excel 추가기능. 워크북 전체의 구조·수식·탭 종속성을 이해한 채로 답합니다.</p>
+    </div>
+
+    <div class="compare">
+      <div class="compare__row compare__row--head">
+        <div>구분</div>
+        <div>일반 Claude (웹·앱)</div>
+        <div class="accent-bg">Claude in Excel</div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__label">사용 위치</div>
+        <div class="vs-claude">별도 브라우저·앱</div>
+        <div class="vs-excel"><strong>엑셀 내부 사이드바</strong></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__label">데이터 인식</div>
+        <div class="vs-claude">붙여넣은 텍스트 위주</div>
+        <div class="vs-excel"><strong>워크북 전체 구조 · 수식 · 탭 종속성</strong></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__label">답변 근거</div>
+        <div class="vs-claude">텍스트 기반</div>
+        <div class="vs-excel"><strong>셀 단위 인용 (셀 주소 표기)</strong></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__label">수식 처리</div>
+        <div class="vs-claude">수식을 텍스트로만 다룸</div>
+        <div class="vs-excel"><strong>수식 보존하며 직접 수정 · 생성</strong></div>
+      </div>
+    </div>
+
+    <div class="concepts" style="margin-top: 32px; grid-template-columns: 1fr 1fr;">
+      <div class="concept">
+        <span class="concept__tag">지원 환경</span>
+        <p class="concept__body" style="font-size: 16px; color: var(--ink);">Excel 2016 이상 (Windows · Mac) · Excel for the web · Pro / Max / Team / Enterprise 플랜</p>
+      </div>
+      <div class="concept">
+        <span class="concept__tag">지원 파일·모델</span>
+        <p class="concept__body" style="font-size: 16px; color: var(--ink);">.xlsx · .xlsm (매크로/VBA·데이터 테이블 미지원) · Opus 4.6 / 4.5 · Sonnet 4.6 (최대 1M 토큰)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     설치 (charcoal)
+     ============================================================ -->
+<section class="tile tile--charcoal" id="install">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅱ. 설치 및 첫 실행</p>
+      <h2 class="h-display">4단계<span class="period">.</span> 5분<span class="period">.</span></h2>
+    </div>
+
+    <div class="steps" style="--cols: 4;">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__title on-dark">엑셀 실행</div>
+        <div class="step__body">상단 [홈] 탭 → [추가기능] 클릭.</div>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__title on-dark">스토어 검색</div>
+        <div class="step__body">‘Claude’ 입력 → ‘Claude by Anthropic for Excel’ → [추가].</div>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__title on-dark">로그인</div>
+        <div class="step__body">[홈] 리본의 Claude 아이콘 → 안내에 따라 로그인.</div>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <div class="step__title on-dark">사용 시작</div>
+        <div class="step__body">사이드바가 열리면 사용 준비 완료.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>회사 보안정책 확인.</strong>
+      회사 PC에서 Office 추가기능 설치가 차단된 경우, IT 담당자에게 ‘Microsoft AppSource — Claude by Anthropic for Excel’ 허용을 요청하세요. 추가기능은 사내 관리자에 의해 조직 단위로 일괄 배포할 수도 있습니다.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     핵심 기능 4가지 (light)
+     ============================================================ -->
+<section class="tile tile--light">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅲ. 핵심 기능</p>
+      <h2 class="h-display">자주 쓰이는<br>네 가지<span class="period">.</span></h2>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature__num">01</div>
+        <h3 class="feature__title">셀 단위 질의응답<span class="period">.</span></h3>
+        <p class="feature__body">현재 열려 있는 워크북을 읽고, 셀·범위·탭에 대해 자연어로 질문할 수 있습니다. 답변에는 근거 셀이 함께 표시됩니다.</p>
+        <div class="example">‘2024시트’ B2:B500의 합계와 평균을 구하고, 비정상적으로 큰 항목을 알려줘.</div>
+        <div class="example">이 워크북에서 부서별 인원수가 가장 많은 상위 5개를 표로 정리해줘.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__num">02</div>
+        <h3 class="feature__title">통계 집계·요약<span class="period">.</span></h3>
+        <p class="feature__body">원시 데이터에서 그룹핑·요약·교차분석을 자연어로 지시. 피벗·SUMIFS 없이 결과 테이블을 받습니다.</p>
+        <div class="example">학과별·전형별 지원자 수와 전년 대비 증감률(%)을 한 표로 만들어줘.</div>
+        <div class="example">5점 척도 응답의 빈도·평균·표준편차를 학과별로 산출해줘.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__num">03</div>
+        <h3 class="feature__title">데이터 정제·분류<span class="period">.</span></h3>
+        <p class="feature__body">날짜 형식 통일, 중복 식별, 결측값 표시, 자유응답의 주제별·감정별 자동 태깅까지.</p>
+        <div class="example">C열의 ‘학과명’ 표기를 표준 학과 코드로 통일하고, 매핑 결과를 보여줘.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__num">04</div>
+        <h3 class="feature__title">보고용 해석<span class="period">.</span></h3>
+        <p class="feature__body">통계 결과를 만드는 것을 넘어, 보고서에 그대로 옮길 수 있는 해석 문장을 생성합니다.</p>
+        <div class="example">위 표를 임원 보고용 ‘세 줄 요약’과 ‘주목할 변화 3가지’로 정리해줘.</div>
+        <div class="example">2024 대비 2025의 변화를 비교 분석하고 원인 가설을 데이터에서 찾아줘.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5단계 워크플로 (parchment)
+     ============================================================ -->
+<section class="tile tile--parch" id="workflow">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅳ. 통계자료 워크플로</p>
+      <h2 class="h-display">5단계로 끝냅니다<span class="period">.</span></h2>
+      <p class="lead">실전 표준 흐름 — 점검에서 보고까지.</p>
+    </div>
+
+    <div class="steps" style="--cols: 5;">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__title">데이터 점검</div>
+        <div class="step__body">결측·중복·이상치 자동 점검.</div>
+        <div class="step__quote">“이 데이터의 결측·중복·이상치를 한 번에 진단해줘.”</div>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__title">정제·표준화</div>
+        <div class="step__body">표기·형식 통일.</div>
+        <div class="step__quote">“날짜·학과명·전형명 표기를 표준화하고 결과를 표로.”</div>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__title">집계·교차</div>
+        <div class="step__body">그룹·범주별 통계 산출.</div>
+        <div class="step__quote">“학과별·연도별 지원자 수와 전년 대비 증감률을 한 표로.”</div>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <div class="step__title">시각화 보조</div>
+        <div class="step__body">차트 추천 및 데이터 정리.</div>
+        <div class="step__quote">“이 표에 적합한 차트 유형과 데이터 범위를 정리해줘.”</div>
+      </div>
+      <div class="step">
+        <div class="step__num">5</div>
+        <div class="step__title">해석·보고</div>
+        <div class="step__body">보고용 요약 문장.</div>
+        <div class="step__quote">“임원 보고용 3줄 요약 + 시사점 2가지로 정리해줘.”</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>입학관리팀 적용.</strong>
+      ① 원서접수 마감 후 학과·전형별 지원율 자동 산출 ·
+      ② 면접 평가 결과 분포 통계 ·
+      ③ 최근 3년 추이 비교 ·
+      ④ 경쟁률 변동 원인 추정 ·
+      ⑤ 대내외 보고용 요약문 자동화.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     좋은 프롬프트 4가지 (graphite)
+     ============================================================ -->
+<section class="tile tile--graphite tile--compact">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅴ. 좋은 프롬프트의 조건</p>
+      <h2 class="h-display">결과의 품질은<br>프롬프트가 결정합니다<span class="period">.</span></h2>
+    </div>
+    <div class="goals" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.08);">
+      <div class="goal" style="background: var(--tile-graphite); color: var(--on-dark);">
+        <div class="goal__num" style="color: var(--primary-on-dark);">①</div>
+        <h3 class="goal__title" style="color:#fff;">범위를 명확히</h3>
+        <p class="goal__body" style="color: var(--on-dark-muted);">‘이 시트’가 아니라 ‘2024시트의 B2:B500’처럼 셀 주소 함께.</p>
+      </div>
+      <div class="goal" style="background: var(--tile-graphite); color: var(--on-dark);">
+        <div class="goal__num" style="color: var(--primary-on-dark);">②</div>
+        <h3 class="goal__title" style="color:#fff;">출력 형식 지정</h3>
+        <p class="goal__body" style="color: var(--on-dark-muted);">‘표로’, ‘세 줄 요약으로’, ‘차트 제안과 함께’.</p>
+      </div>
+      <div class="goal" style="background: var(--tile-graphite); color: var(--on-dark);">
+        <div class="goal__num" style="color: var(--primary-on-dark);">③</div>
+        <h3 class="goal__title" style="color:#fff;">비교 기준 제시</h3>
+        <p class="goal__body" style="color: var(--on-dark-muted);">‘전년 대비’, ‘부서 평균 대비’ — 비교축 함께.</p>
+      </div>
+      <div class="goal" style="background: var(--tile-graphite); color: var(--on-dark);">
+        <div class="goal__num" style="color: var(--primary-on-dark);">④</div>
+        <h3 class="goal__title" style="color:#fff;">한 번에 하나씩</h3>
+        <p class="goal__body" style="color: var(--on-dark-muted);">큰 작업은 정제 → 집계 → 해석으로 단계별로.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     보안 (light)
+     ============================================================ -->
+<section class="tile tile--light">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">Ⅵ. 보안 및 주의사항</p>
+      <h2 class="h-display">데이터를 다루기 전<span class="period">,</span><br>세 가지 원칙<span class="period">.</span></h2>
+    </div>
+    <div class="features" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div class="feature">
+        <div class="feature__num">01</div>
+        <h3 class="feature__title">데이터 처리 정책<span class="period">.</span></h3>
+        <p class="feature__body" style="">사내 정책상 민감정보·개인정보·미공개 통계는 입력하지 않는 것이 원칙. 개인정보는 삭제하거나 가명처리된 사본 사용 권장.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__num">02</div>
+        <h3 class="feature__title">신뢰할 수 없는 파일<span class="period">.</span></h3>
+        <p class="feature__body" style="">출처가 불분명한 외부 엑셀은 절대 분석시키지 않습니다. 셀에 숨겨진 악성 코드 등이 있으면 데이터 변조·삭제 위험이 있음. 반드시, 내부 자료만 분석</p>
+      </div>
+      <div class="feature">
+        <div class="feature__num">03</div>
+        <h3 class="feature__title">결과 검증은 필수<span class="period">.</span></h3>
+        <p class="feature__body">AI 결과는 ‘초안’으로 인식하고, 핵심 수치는 셀 인용을 직접 클릭해 검증. 공식 보고용 통계는 반드시 사람이 한 번 더 확인 후 공식화.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     부록: 즉시 써먹는 프롬프트 10선 (black)
+     ============================================================ -->
+<section class="tile tile--black" id="appendix">
+  <div class="tile__inner tile__inner--left tile__inner--wide">
+    <div class="section-head">
+      <p class="eyebrow">부록</p>
+      <h2 class="h-display">즉시 써먹는<br>프롬프트 10선<span class="period">.</span></h2>
+      <p class="lead">통계자료 작성용 — 그대로 복사해 쓰세요.</p>
+    </div>
+
+    <div class="prompts">
+      <div class="prompt"><div class="prompt__num">01</div><div class="prompt__text">이 워크북에서 결측·중복·이상치를 한 번에 진단해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">02</div><div class="prompt__text">‘C열’의 학과명 표기를 표준 학과명으로 일괄 통일해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">03</div><div class="prompt__text">‘2024시트’와 ‘2025시트’를 동일 키로 합쳐 비교용 단일 표를 만들어줘.</div></div>
+      <div class="prompt"><div class="prompt__num">04</div><div class="prompt__text">전형별·학과별 지원자 수를 피벗 형태로 만들어줘.</div></div>
+      <div class="prompt"><div class="prompt__num">05</div><div class="prompt__text">응답 점수의 학과별 평균·표준편차를 표로 정리하고, 가장 낮은 학과 3곳을 표시해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">06</div><div class="prompt__text">전년 대비 지원자 증감을 절대값과 % 모두로 산출해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">07</div><div class="prompt__text">이 표에 가장 적합한 차트 유형 3가지를 추천하고, 차트용 데이터 범위를 정리해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">08</div><div class="prompt__text">위 통계 결과를 임원 보고용 ‘3줄 요약’으로 작성해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">09</div><div class="prompt__text">주목할 만한 변화 3가지와 그 원인 가설을 데이터 근거와 함께 제시해줘.</div></div>
+      <div class="prompt"><div class="prompt__num">10</div><div class="prompt__text">이 분석 결과를 보도자료 형식으로 200자 이내로 정리해줘.</div></div>
+    </div>
+
+    <div class="btn-row" style="margin-top: 56px;">
+      <a class="btn btn--primary btn--arrow" href="#part1">처음으로</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<div></div>
+
+
+</body></html>
