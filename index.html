@@ -393,6 +393,14 @@ img { max-width: 100%; display: block; }
   margin: 24px 0 0 0;
   max-width: 760px;
 }
+.lead--question {
+  font-size: clamp(24px, 2.1vw, 32px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.018em;
+  margin-top: 28px;
+}
+.lead--question + .lead { margin-top: 14px; }
 .tile--black .lead,
 .tile--graphite .lead,
 .tile--charcoal .lead { color: var(--on-dark-muted); }
@@ -1541,7 +1549,8 @@ code.kbd {
     <div class="hero">
       <div class="hero__pill"><span class="dot"></span> 1일차 · 제품·기능 개요</div>
       <h1 class="h-mega">한 개의 두뇌<span class="period">.</span><br>여섯 개의 도구<span class="period">.</span></h1>
-      <p class="lead" style="">Claude는 단일 챗봇이 아닙니다.&nbsp;</p><div>같은 모델을 어떤 환경에서 만나느냐에 따라<br>전혀 다른 일이 가능한 ‘업무용 AI 플랫폼’입니다.</div><p></p>
+      <p class="lead lead--question">왜 ChatGPT나 Gemini가 아닌<br>Claude를 선택해야 할까요?</p>
+      <p class="lead">Claude는 단일 챗봇이 아닙니다.<br>같은 모델을 어떤 환경에서 만나느냐에 따라<br>전혀 다른 일이 가능한 ‘업무용 AI 플랫폼’입니다.</p>
       <div class="btn-row">
         <a class="btn btn--primary btn--arrow" href="#products">6개 제품 보기</a>
         <a class="btn btn--ghost" href="#decision">상황별 선택 가이드</a>
